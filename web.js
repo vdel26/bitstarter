@@ -1,10 +1,13 @@
-var express = require('express');
-var fs = require('fs');
+var express = require('express'),
+    fs = require('fs');
 
-var app = express.createServer(express.logger());
+var app = express.createServer();
+
+app.use(express.logger())
+app.use(express.static('public'));
 
 app.get('/', function(request, response) {
-  var text = fs.readFileSync('index.html').toString('utf8');
+  var text = fs.readFileSync('index2.html').toString('utf8');
   response.send(text);
 });
 
